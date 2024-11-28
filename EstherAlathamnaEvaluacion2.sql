@@ -105,6 +105,21 @@ LEFT JOIN rental r ON c.customer_id = r.customer_id
 GROUP BY c.customer_id, c.first_name, c.last_name;
 -- Con LEFT JOIN aparecen también los clientes que no tienen alquileres, con total_rentals = 0
 
+-- OPCIÓN3
+
+SELECT 
+customer.customer_id AS ID_Cliente,
+customer.first_name AS Nombre,
+customer.last_name AS Apellido,
+COUNT(rental.rental_id) AS Peliculas_Alquiladas
+FROM customer 
+LEFT JOIN rental 
+ON customer.customer_id = rental.customer_id
+GROUP BY 
+customer.customer_id, customer.first_name, customer.last_name
+ORDER BY 
+Peliculas_Alquiladas DESC;
+
 
 ------------------------------------------------------------------------------
 
